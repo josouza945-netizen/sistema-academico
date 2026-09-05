@@ -7,6 +7,7 @@ import java.util.List;
 
 public class AlunoService {
     private AlunoRepository repository;
+    private long proximoId= 1l;
 
     public AlunoService(AlunoRepository repository) {
         this.repository = repository;
@@ -34,11 +35,25 @@ public class AlunoService {
             return;
         }
 
+        aluno.setId(proximoId);
+        proximoId ++;
+
         this.repository.salvar(aluno);
     }
 
     public List<Aluno> listar(){
         return repository.listar();
+    }
+
+    public Aluno buscaPorId(Long id){
+        Aluno aluno = repository.buscarPorid(id);
+        if (aluno == null){
+            System.out.println("Aluno não encontrado");
+            return null;
+        }
+        return aluno;
+
+
     }
 
 }
