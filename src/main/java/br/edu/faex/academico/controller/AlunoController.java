@@ -22,4 +22,12 @@ public class AlunoController {
     public Aluno buscarPorId(Long id){
         return service.buscaPorId(id);
     }
+
+   public void excluir(Long id){
+        service.excluir(id);
+   }
+
+   public void atualizar (Aluno alunoEditar){;
+        service.atualizar(alunoEditar);
+   }
 }

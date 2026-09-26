@@ -46,7 +46,7 @@ public class ProfessorService {
     }
 
     public Professor buscaPorId(Long id){
-        Professor professor = repository.buscaPorId(id);
+        Professor professor = repository.buscarPorId(id);
         if (professor == null){
             System.out.println("Professor não encontrado");
             return null;

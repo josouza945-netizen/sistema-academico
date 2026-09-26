@@ -55,5 +55,35 @@ public class AlunoService {
 
 
     }
+    public void excluir(Long id){
+        Aluno aluno = repository.buscarPorid(id);
+        if (aluno == null){
+            System.out.println("Aluno não encontrado");
+            return;
+        }
+        repository.excluir(id);
+    }
+
+    public void atualizar(Aluno alunoEditado){
+        Aluno aluno = repository.buscarPorid(alunoEditado.getId());
+        if(aluno == null){
+            System.out.println("Aluno não encontrado");
+            return;
+        }
+        if (aluno.getNome() == null || aluno.getNome().isBlank()) {
+            System.out.println("O nome do aluno é obrigatório.");
+            return;
+        }
+        if (aluno.getEmail() == null || aluno.getEmail().isBlank()) {
+            System.out.println("O Email do aluno é obrigatório.");
+            return;
+        }
+        if (!aluno.getEmail().contains("@")) {
+            System.out.println("E-mail inválido.");
+            return;
+        }
+        repository.atualizar(alunoEditado);
+
+    }
 
 }
